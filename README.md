@@ -57,7 +57,11 @@ Files:
   pre-wrapped and centred. `'` and `( )` are hand-drawn because the font doesn't have them. `preview.py` renders a PNG.
 - **`patch_oblique.py`**: LDR insertion, CALL patching and repacking (CRC32 + LZMA "alone" + tar, using
   op1repacker's LZMA settings).
-- **`tools/ldr.py`**: BF52x LDR block parser.
+- **`tools/`**: LDR parser, image builder and RE helpers; see MODDING.md.
+
+## Make your own mods
+
+See **[MODDING.md](MODDING.md)**. It covers the toolchain (binutils, GCC, Ghidra), the firmware format, the memory map, the calling convention, the input and rendering internals with addresses, debugging, and a step-by-step workflow, and it's written so a coding agent can follow it. The helper scripts are in `tools/`.
 
 ## For op1r / other firmware builders
 

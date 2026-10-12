@@ -1,0 +1,39 @@
+diff --git a/src/main/java/blackfin/BlackfinLoader.java b/src/main/java/blackfin/BlackfinLoader.java
+index 3bda455..291a805 100644
+--- a/src/main/java/blackfin/BlackfinLoader.java
++++ b/src/main/java/blackfin/BlackfinLoader.java
+@@ -133,10 +133,12 @@ public class BlackfinLoader extends AbstractLibrarySupportLoader {
+ 	}
+ 
+ 	@Override
+-	protected void load(ByteProvider provider, LoadSpec loadSpec, List<Option> options,
+-			Program program, TaskMonitor monitor, MessageLog log)
++	protected void load(Program program, ImporterSettings settings)
+ 			throws CancelledException, IOException {
+-		
++		ByteProvider provider = settings.provider();
++		TaskMonitor monitor = settings.monitor();
++		MessageLog log = settings.log();
++
+ 		BinaryReader reader = new BinaryReader(provider, true);
+ 		long nextDxeOffset = 0;
+ 		
+@@ -253,18 +255,4 @@ public class BlackfinLoader extends AbstractLibrarySupportLoader {
+ 		}		
+ 	}
+ 	
+-	@Override
+-	public List<Option> getDefaultOptions(ByteProvider provider, LoadSpec loadSpec,
+-			DomainObject domainObject, boolean isLoadIntoProgram) {
+-		List<Option> list =
+-			super.getDefaultOptions(provider, loadSpec, domainObject, isLoadIntoProgram);
+-
+-		return list;
+-	}
+-
+-	@Override
+-	public String validateOptions(ByteProvider provider, LoadSpec loadSpec, List<Option> options, Program program) {
+-
+-		return super.validateOptions(provider, loadSpec, options, program);
+-	}
+ }
